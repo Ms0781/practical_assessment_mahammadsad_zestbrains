@@ -6,6 +6,8 @@ class AppColors {
    static Color whiteColor = Color(0xFFFFFFFF);
 
    static Color color1 = Color(0xff8B8B8B);
+   static Color checkBoxColor = Color(0xffFAB112);
+   static Color color2 = Color(0xff7C7C7C);
 
    static Color buttonColor = Color(0xff004961);
    static Color logOutTextColor = Color(0xff100F0F);

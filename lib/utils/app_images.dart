@@ -7,7 +7,8 @@ class AppImages{
   static String logOutImage = "assets/images/logout.svg";
   static String searchIcon = "assets/images/search_icon.svg";
   static String profileImage = "assets/images/profile_image.png";
-
+  static String passwordVisibility = "assets/images/password_visibility.svg";
+  static String emailIcon = "assets/images/mail_icon.svg";
   //pet images
   static String charlieImage = "assets/images/charlie_image.png";
   static String cooperImage = "assets/images/cooper_image.png";

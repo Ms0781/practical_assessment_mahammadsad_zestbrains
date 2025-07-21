@@ -5,8 +5,9 @@ class CustomTextFields extends StatefulWidget {
   final TextEditingController? controller;
   final String? suffixIcon;
   final String? hint;
+  final double? margin;
   final Function(String?)? validationFunction;
-  const CustomTextFields({super.key,required this.controller,required this.suffixIcon,required this.validationFunction,required this.hint});
+  const CustomTextFields({super.key,required this.controller,required this.suffixIcon,required this.validationFunction,required this.hint, this.margin});
 
   @override
   State<CustomTextFields> createState() => _CustomTextFieldsState();
@@ -19,7 +20,7 @@ class _CustomTextFieldsState extends State<CustomTextFields> {
       width: MediaQuery.sizeOf(context).width,
       height: 60,
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      margin: const EdgeInsets.symmetric(horizontal: 20),
+      margin: EdgeInsets.symmetric(horizontal: widget.margin ?? 0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -38,7 +39,7 @@ class _CustomTextFieldsState extends State<CustomTextFields> {
           fillColor: Colors.white,
             suffixIcon: widget.suffixIcon != null
                 ? Padding(
-              padding: const EdgeInsets.only(right: 10), // Optional space to the right
+              padding: const EdgeInsets.all(10), // Optional space to the right
               child: SvgPicture.asset(
                 widget.suffixIcon!,
                 width: 16,

@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:practical_assessment_mahammadsad_zestbrains/utils/app_strings.dart';
 import 'package:practical_assessment_mahammadsad_zestbrains/views/custom_widgets/custom_button.dart';
 import 'package:practical_assessment_mahammadsad_zestbrains/views/custom_widgets/custom_textfields.dart';
+import 'package:practical_assessment_mahammadsad_zestbrains/views/dashboard_screen.dart';
 
 import '../utils/app_colors.dart';
 import '../utils/app_images.dart';
@@ -17,24 +18,28 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreen extends State<SignInScreen> {
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //       body: Column(),
-  //   );
-  // }
+
+  TextEditingController? emailController;
+  TextEditingController? passwordController;
+
+  @override
+  void initState() {
+    super.initState();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
-        child: SizedBox(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           height: size.height,
           width: size.width,
           child: Column(
             children: [
-              // 🔷 Curved top with logo
               Stack(
                 children: [
                   ClipPath(
@@ -82,46 +87,93 @@ class _SignInScreen extends State<SignInScreen> {
 
               const SizedBox(height: 20),
 
-              Expanded(child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    CustomTextFields(controller: null, suffixIcon: null, validationFunction: (value){}, hint: 'Email'),
-                    const SizedBox(height: 15),
-                    CustomTextFields(controller: null, suffixIcon: null, validationFunction: (value){}, hint: 'Email'),
-
-                    const SizedBox(height: 10),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Checkbox(value: true, onChanged: (_) {}),
-                            const Text('Remember me'),
-                          ],
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: const Text('Forgot password?'),
-                        ),
-                      ],
+              Expanded(child:  Column(
+                children: [
+                  
+                  Text(AppStrings.welcomeBack,
+                   style: TextStyle(
+                     fontFamily: 'raleway',
+                     fontSize: 24,
+                     fontWeight: FontWeight.w700,
+                     color: AppColors.logOutTextColor
+                   ),
+                  ),
+                  const SizedBox(height: 10,),
+                  Text(AppStrings.welComeText,
+                    style: TextStyle(
+                        fontFamily: 'raleway',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.color2
                     ),
 
-                    const SizedBox(height: 20),
+                  ),
 
-                    CustomButton(
+                  const SizedBox(height: 20,),
+                  CustomTextFields(
+                      controller: null,
+                      suffixIcon: AppImages.emailIcon,
+                      validationFunction: (value){}, hint: AppStrings.email),
+                  const SizedBox(height: 15),
+                  CustomTextFields(
+                      controller: null,
+                      suffixIcon: AppImages.passwordVisibility,
+                      validationFunction: (value){}, hint: AppStrings.password),
 
-                        buttonText: 'Sign In',
-                       onTap: (){},
-                        backgroundColor: AppColors.buttonColor,
-                        textColor: AppColors.whiteColor,
-                    ),
+                  const SizedBox(height: 10),
 
-                    const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Checkbox(
+                              value: true,
+                              activeColor: AppColors.checkBoxColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5)
+                              ),
+                              onChanged: (_) {}
+                          ),
+                          Text(AppStrings.rememberMe,
+                            style: TextStyle(
+                                fontFamily: 'raleway',
+                                fontWeight: FontWeight.w500,
+                                fontSize: 13,
+                                color: AppColors.logOutTextColor
+                            ),
 
-                  ],
-                ),
+                          ),
+                        ],
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text('Forgot password?',
+                          style: TextStyle(
+                              fontFamily: 'raleway',
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.color1
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  CustomButton(
+                    buttonText: AppStrings.signInLabel,
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => DashboardScreen()));
+                    },
+                    backgroundColor: AppColors.buttonColor,
+                    textColor: AppColors.whiteColor,
+                  ),
+
+                  const SizedBox(height: 20),
+
+                ],
               ),),
 
               Text.rich(
