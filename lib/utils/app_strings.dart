@@ -22,4 +22,5 @@ class AppStrings{
   static String signUpLabel = "Sign Up";
   static String signInLabel = "Sign In";
   static String rememberMe = 'Remember me';
+  static String forgotPassword = 'Forgot Password?';
 }

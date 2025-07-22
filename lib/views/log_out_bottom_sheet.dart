@@ -13,7 +13,7 @@ class LogOutBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width,
-      height: MediaQuery.sizeOf(context).height * 0.3,
+      height: MediaQuery.sizeOf(context).height * 0.35,
       padding: const EdgeInsets.all(20),
       child: Column(
         children: [
@@ -60,7 +60,6 @@ class LogOutBottomSheet extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(),
         ],
       ),
     );
